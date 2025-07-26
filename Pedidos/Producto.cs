@@ -13,10 +13,12 @@ namespace Pedidos
             Console.WriteLine("***** Datos del Producto *****");
             Console.WriteLine($"ID: {Id}");
             Console.WriteLine($"Nombre: {Nombre}");
-            Console.WriteLine($"Precio: {Precio}");
+            Console.WriteLine($"Precio: {Precio:C}");
             Console.WriteLine($"Cantidad disponible: {Stock}");
             Console.WriteLine();
         }
+
+        //Si el constructor no lleva parámetros, C# automaticamente lo crea por detrás
 
         public void DisminuirStock(int Cantidad)
         {
@@ -27,6 +29,7 @@ namespace Pedidos
             else
             {
                 Console.WriteLine($"No hay suficiente stock de {Nombre}");
+                Console.WriteLine();
             }
         }
     }
