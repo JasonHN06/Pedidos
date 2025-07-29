@@ -1,4 +1,5 @@
 ﻿using Pedidos;
+using Pedidos.herencia;
 
 Producto producto = new Producto();
 producto.Id = 1;
@@ -23,3 +24,12 @@ pedido.MostrarDetalles();
 
 producto.MostrarInformacion();
 producto1.MostrarInformacion();
+
+Electronico electronico = new Electronico();
+electronico.Id = 3;
+electronico.Nombre = "Iphone 17 Pro Max";
+electronico.Precio = 1000;
+electronico.Stock = 200;
+electronico.GarantiaMeses = 12;
+electronico.Voltaje = "110V";
+electronico.MostrarInformacion();
