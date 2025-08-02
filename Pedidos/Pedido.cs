@@ -14,6 +14,7 @@
             Items = new List<ItemPedido>();
         }
 
+        // En este caso estamos asignando el objeto abstracto Producto como parametro
         public void AgregarItem(Producto Producto, int Cantidad)
         {
             if (Producto.Stock >= Cantidad)
