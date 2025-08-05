@@ -1,6 +1,6 @@
 ﻿namespace Pedidos.herencia
 {
-    public class Libro : Producto
+    public class Libro : Producto, IInformacionDetallada
     {
         public string ISBN { get; set; }
         public string Autor { get; set; }
@@ -10,10 +10,7 @@
         {
             Console.WriteLine();
             Console.WriteLine("***** Datos del Producto *****");
-            Console.WriteLine($"ID: {Id}");
-            Console.WriteLine($"Nombre: {Nombre}");
-            Console.WriteLine($"Precio: {Precio:C}");
-            Console.WriteLine($"Cantidad disponible: {Stock}");
+            Console.WriteLine(ObtenerInformacionDetallada());
             Console.WriteLine($"ISBN: {ISBN}");
             Console.WriteLine($"Autor: {Autor}");
             Console.WriteLine($"Número de Páginas: {NumeroPaginas}");
