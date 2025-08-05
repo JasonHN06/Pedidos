@@ -1,8 +1,8 @@
 ﻿namespace Pedidos
 {
-    public class Pedido
+    public class Pedido : IInformacionDetallada
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public DateTime Fecha { get; set; }
         public List<ItemPedido> Items { get; set; }
         public decimal Total => Items.Sum(item => item.Subtotal);
@@ -34,8 +34,7 @@
         public void MostrarDetalles()
         {
             Console.WriteLine("--------------------------");
-            Console.WriteLine($"Detalles del Pedido #{Id}");
-            Console.WriteLine($"Fecha: {Fecha:dd/MM/yyyy HH:mm:ss}");
+            Console.WriteLine(ObtenerInformacionDetallada());
 
             foreach (var item in Items)
             {
@@ -44,6 +43,11 @@
             Console.WriteLine($"Total del Pedido: {Total:C}");
             Console.WriteLine("--------------------------");
             Console.WriteLine();
+        }
+        public string ObtenerInformacionDetallada()
+        {
+            return  $"Detalles del Pedido #{Id}\n" +
+                    $"Fecha: {Fecha:dd/MM/yyyy HH:mm:ss}";
         }
     }
 }
