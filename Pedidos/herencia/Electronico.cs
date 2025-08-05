@@ -8,10 +8,7 @@
         {
             Console.WriteLine();
             Console.WriteLine("***** Datos del Producto *****");
-            Console.WriteLine($"ID: {Id}");
-            Console.WriteLine($"Nombre: {Nombre}");
-            Console.WriteLine($"Precio: {Precio:C}");
-            Console.WriteLine($"Cantidad disponible: {Stock}");
+            Console.WriteLine(ObtenerInformacionDetallada());
             Console.WriteLine($"Garantía: {GarantiaMeses} meses");
             Console.WriteLine($"Voltaje: {Voltaje}");
         }
