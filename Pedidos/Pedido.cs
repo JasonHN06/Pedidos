@@ -6,6 +6,7 @@
         public DateTime Fecha { get; set; }
         public List<ItemPedido> Items { get; set; }
         public decimal Total => Items.Sum(item => item.Subtotal);
+        private bool TieneStock { get; set; }
 
         public Pedido(int IdPedido)
         {
@@ -23,27 +24,33 @@
                 Producto.DisminuirStock(Cantidad);
                 Console.WriteLine($"El Producto {Producto.Nombre} con Cantidad: {Cantidad}, se ha agregado al Pedido");
                 Console.WriteLine();
+                TieneStock = true;
             }
             else
             {
                 Console.WriteLine($"No hay suficiente stock de {Producto.Nombre}");
                 Console.WriteLine();
+                TieneStock = false;
             }
         }
 
         public void MostrarDetalles()
         {
-            Console.WriteLine("--------------------------");
-            Console.WriteLine(ObtenerInformacionDetallada());
-
-            foreach (var item in Items)
+            if (TieneStock)
             {
-                Console.WriteLine($"Producto: {item.Producto.Nombre}, Cantidad: {item.Cantidad}, Subtotal: {item.Subtotal:C}");
+                Console.WriteLine("--------------------------");
+                Console.WriteLine(ObtenerInformacionDetallada());
+
+                foreach (var item in Items)
+                {
+                    Console.WriteLine($"Producto: {item.Producto.Nombre}, Cantidad: {item.Cantidad}, Subtotal: {item.Subtotal:C}");
+                }
+                Console.WriteLine($"Total del Pedido: {Total:C}");
+                Console.WriteLine("--------------------------");
+                Console.WriteLine();
             }
-            Console.WriteLine($"Total del Pedido: {Total:C}");
-            Console.WriteLine("--------------------------");
-            Console.WriteLine();
         }
+
         public string ObtenerInformacionDetallada()
         {
             return  $"Detalles del Pedido #{Id}\n" +
